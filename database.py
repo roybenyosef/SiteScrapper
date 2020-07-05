@@ -1,3 +1,4 @@
+from link_scrapper import scrap_links
 from shutil import copyfile
 import logging
 import os
@@ -21,6 +22,8 @@ def _backup_db():
 
 def create_db():
     logging.info('Building Database')
+
+    scrap_links()
 
     Game = Query()
     games_table.upsert({'int': 1, 'char': 'a'}, cond=Game.int == 1)
